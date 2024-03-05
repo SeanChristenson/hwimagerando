@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewMaster Viewer</title>
+    <style>
+        img {
+            width: 900px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ViewMaster Viewer</h1>
+    <div id="imageContainer">
+        <p>Press the button below to view a random social justice image.</p>
+    </div>
+    <button id="randomImageButton">Random Image</button>
+
+    <script>
+        const socialJusticeImages = [
+            {
+                title: "Black Lives Matter Protest",
+                image: "blm1.jpg",
+                description: "People marching for the Black Lives Matter movement.",
+                author: "Daniel Leal-Olivas",
+                year: 2020
+            },
+            {
+                title: "Women's Rights March",
+                image: "Women.jpg",
+                description: "Women marching for women's rights.",
+                author: "Mobilus In Mobili",
+                year: 2017
+            },
+            {
+                title: "Refugee Camp",
+                image: "refcamp.jpg",
+                description: "A refugee camp.",
+                author: "Sadik Gulec",
+                year: 2021
+            },
+            {
+                title: "Climate Change Protest",
+                image: "climate.jpg",
+                description: "Activists protesting for action on climate change.",
+                author: "Suleiman Mbatiah",
+                year: 2023
+            },
+            {
+                title: "LGBTQ+ Pride Parade",
+                image: "lgb.jpg",
+                description: "People advocating for LGBTQ+ rights.",
+                author: "Alander Rocha",
+                year: 2023
+            }
+        ];
+
+        const randomImageButton = document.getElementById('randomImageButton');
+        const imageContainer = document.getElementById('imageContainer');
+
+        randomImageButton.addEventListener('click', () => {
+            const randomImage = socialJusticeImages[Math.floor(Math.random() * socialJusticeImages.length)];
+
+            const imageElement = document.createElement('img');
+            imageElement.src = 'images/' + randomImage.image;
+            imageElement.alt = randomImage.title;
+            imageElement.style.width = '600px';
+            imageElement.style.height = '600px';
+
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = randomImage.title;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = randomImage.description;
+
+            const authorElement = document.createElement('p');
+            authorElement.textContent = 'Author: ' + randomImage.author;
+
+            const yearElement = document.createElement('p');
+            yearElement.textContent = 'Year: ' + randomImage.year;
+
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(titleElement);
+            imageContainer.appendChild(imageElement);
+            imageContainer.appendChild(descriptionElement);
+            imageContainer.appendChild(authorElement);
+            imageContainer.appendChild(yearElement);
+        });
+    </script>
+</body>
+</html>
